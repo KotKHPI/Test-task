@@ -1,5 +1,9 @@
 # Test-task
 
+#### Radievych V.
+#### 11-oct-2023
+#### version 1.0
+
 This is a test task for VRG Soft
 
 Tasks:
