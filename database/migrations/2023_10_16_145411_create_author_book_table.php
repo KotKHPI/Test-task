@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book_author', function (Blueprint $table) {
+        Schema::create('author_book', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Author::class)->constrained();
             $table->foreignIdFor(\App\Models\Book::class)->constrained();
@@ -24,11 +24,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('book_author', function (Blueprint $table) {
+        Schema::table('author_book', function (Blueprint $table) {
             $table->dropForeignIdFor(\App\Models\Author::class);
             $table->dropForeignIdFor(\App\Models\Book::class);
         });
 
-        Schema::dropIfExists('book_author');
+        Schema::dropIfExists('author_book');
     }
 };
