@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthorRequest;
 use App\Models\Author;
 use Illuminate\Http\Request;
 
@@ -26,15 +27,18 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('livewire.authors.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AuthorRequest $request)
     {
-        //
+        $validate = $request->validated();
+        $author = Author::create($validate);
+
+        return redirect()->route('authors.index')->with('success', 'Author was created!');
     }
 
     /**
@@ -48,9 +52,9 @@ class AuthorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Author $author)
     {
-        //
+        return view('livewire.authors.edit', ['author' => $author]);
     }
 
     /**

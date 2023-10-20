@@ -7,9 +7,13 @@
         <div class="flex space-x-4 items-center">
             <div>Was born {{ $author->created_at->diffForHumans() }}</div>
         </div>
+
         <div class="flex space-x-4 items-center">
             <div>Written {{ $author->books()->count() }} books</div>
         </div>
+
+        <a class="rounded-md px-7 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slate-700/10" href="{{ route('authors.edit', ['author' => $author]) }}" wire:navigate>Edit</a>
+
         <form action="{{ route('authors.destroy', ['author' => $author]) }}" method="POST">
             @csrf
             @method('DELETE')

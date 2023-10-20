@@ -14,12 +14,12 @@
         <nav class="mb-8 flex justify-between text-lg font-medium">
             <ul class="flex space-x-2">
                 <li>
-                    <a href="{{ route('authors.index') }}">Authors</a>
+                    <a href="{{ route('authors.index') }} " wire:navigate>Authors</a>
                 </li>
             </ul>
             <ul class="flex space-x-2">
                 <li>
-                    <a href="{{ route('books.index') }}">Books</a>
+                    <a href="{{ route('books.index') }}" wire:navigate>Books</a>
                 </li>
             </ul>
         </nav>
