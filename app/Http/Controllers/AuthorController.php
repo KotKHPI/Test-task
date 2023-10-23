@@ -60,9 +60,11 @@ class AuthorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AuthorRequest $request, Author $author)
     {
-        //
+        $author->update($request->validated());
+
+        return redirect()->route('authors.index')->with('success', 'Author was updated!');
     }
 
     /**
