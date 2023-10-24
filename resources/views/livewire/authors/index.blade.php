@@ -17,6 +17,7 @@
 
         </x-card-author>
 
+
     @endforeach
 
     <div>
