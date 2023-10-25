@@ -12,6 +12,8 @@
         <a href="{{ route('books.index') }}" class="bg-white rounded-md px-4 py-2 text-center font-medium text-slate-500 shadow-sm ring-1 ring-slate-700/10 h-10" wire:navigate>Clear</a>
     </form>
 
+{{--    <img src="{{ asset('images/VagcGUBQya7aioEiToWWyKMqhwoQDv6fC5QibzAP.png') }}" alt="description">--}}
+
     @foreach($books as $book)
         <x-card-book :book="$book">
 
