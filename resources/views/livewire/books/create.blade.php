@@ -24,7 +24,7 @@
 
             <div>
                 <label>
-                    Image (not bigger 2 mb)
+                    Image (Under 2 mb)
                     <x-input name="image" type="file" />
                 </label>
             </div>

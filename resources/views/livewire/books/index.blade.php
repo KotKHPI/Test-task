@@ -1,9 +1,14 @@
 <x-layout>
+
+    <h2 class="mb-6 rounded-md px-7 py-1 text-right font-medium text-slate-700 shadow-sm ring-1 ring-slate-700/10">
+        Book's page
+    </h2>
+
     <div class="mb-6">
         <a class="rounded-md border border-slate-300 p-2 bg-white text-slate-500" href="{{ route('books.create') }}" wire:navigate>Add a new book</a>
     </div>
 
-    <form action="{{ route('books.index') }}" method="GET" class="mb-4 flex items-center space-x-2">
+    <form action="{{ route('books.index') }}" method="GET" class="mb-8 flex items-center space-x-2">
         <label>
             <input type="text" name="name" placeholder="Search by book/author"
                    value="{{ request('name') }}" class="shadow-sm appearance-none border w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none rounded-md border-slate-300 h-10" />

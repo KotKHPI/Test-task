@@ -1,6 +1,8 @@
 <div class="rounded-md border border-slate-300 bg-white p-3 shadow-sm mb-4">
     <div class="mb-4 flex justify-between">
-        <h2 class="text-lg front-medium">{{ $book->name }}</h2>
+        <a href="{{ route('books.show', ['book' => $book]) }}" wire:navigate>
+            <h2 class="text-lg front-medium">{{ $book->name }}</h2>
+        </a>
     </div>
 
     <div class="mb-4 flex items-center justify-between text-sm text-slate-500">
