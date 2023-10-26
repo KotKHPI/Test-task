@@ -7,7 +7,7 @@
 
     <div class="mb-4 flex items-center justify-between text-sm text-slate-500">
         <div class="flex space-x-4 items-center">
-            <div>Published {{ $book->dateOfPublished }}</div>
+            <div>Published {{ $book->dateOfPublished->format('M j, Y') }}</div>
         </div>
 
         <div class="flex space-x-4 items-center">

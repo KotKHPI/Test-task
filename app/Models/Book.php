@@ -12,6 +12,10 @@ class Book extends Model
 
     protected $fillable = ['name', 'description', 'image', 'dateOfPublished'];
 
+    protected $casts = [
+        'dateOfPublished' => 'datetime'
+    ];
+
     public function authors() : BelongsToMany {
         return $this->belongsToMany(Author::class);
     }
