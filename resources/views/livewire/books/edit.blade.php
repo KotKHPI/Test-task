@@ -33,18 +33,18 @@
             <div>
                 <label>
                     Date of published
-                    <x-input name="date" type="date" :value="$book->dateOfPublished" />
+                    <x-input name="date" type="date" :value="$book->dateOfPublished->toDateString()" />
                 </label>
             </div>
 
             <div>
                 <label>
                     Authors
-                    @foreach($book->authors as $author)
+                    @foreach($authors as $author)
                         <div>
                             <label>
-                                <input type="checkbox" name="authors[]" value="author-{{$author->id}}">
-                                {{$author->first_name}}
+                                <input type="checkbox" name="authors[]" value="author-{{$author->id}}" {{in_array($author->id, $book->authors->pluck('id')->toArray()) ? "checked" : ''}}>
+                                {{$author->first_name}} {{$author->second_name}}
                             </label>
                         </div>
                     @endforeach

@@ -40,8 +40,6 @@ class BookController extends Controller
 
         $authors = Author::find($authors);
 
-//        dd($authors);
-
         $hasFile = $request->hasFile('image');
         $path = null;
 
@@ -75,7 +73,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('livewire.books.edit', ['book' => $book]);
+        return view('livewire.books.edit', ['book' => $book, 'authors' => Author::all()]);
     }
 
     /**
@@ -83,7 +81,33 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, Book $book)
     {
-        //
+        $book->update($request->validated());
+
+        if($request->input('date')) {
+            $newDate = $request->input('date');
+            $book->dateOfPublished = $newDate;
+        }
+
+        $oldAuthors = $book->authors->pluck('id');
+        $newAuthors = $request->input('authors');
+
+        for($i = 0; $i < count($newAuthors); $i++) {
+            $newAuthors[$i] = preg_replace("/[^0-9]/", '', $newAuthors[$i]);
+        }
+
+        if($newAuthors != $oldAuthors) {
+            $book->authors()->detach($oldAuthors);
+            $book->authors()->attach($newAuthors);
+        }
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images');
+            $book->image = $path;
+        }
+
+        $book->save();
+
+        return redirect()->route('books.show', ['book' => $book])->with('success', 'Book was edited');
     }
 
     /**
@@ -95,6 +119,6 @@ class BookController extends Controller
         $book->authors()->detach($authors);
         $book->delete();
 
-        return redirect()->route('books.index')->with('success', 'Book was deleted');
+        return redirect()->route('books.index')->with('success', "Book was deleted");
     }
 }
