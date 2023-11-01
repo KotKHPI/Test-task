@@ -8,7 +8,7 @@
     <div class="mb-4">
         <h1 class="sticky top-0 mb-10 text-2xl">{{ $book->name }}</h1>
 
-        <img class="mb-6" src="{{ asset($book->image) }}" />
+        <img class="mb-6" src="{{ asset($book->image) }}"  alt="image"/>
 
         <p class="text-xl mb-2 text-slate-700 font-medium">Description:</p>
         <div class="mb-8 text-lg indent-8">

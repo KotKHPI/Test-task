@@ -18,11 +18,7 @@
     </form>
 
     @foreach($authors as $author)
-        <x-card-author :author="$author">
-
-        </x-card-author>
-
-
+        <x-card-author :author="$author" />
     @endforeach
 
     <div>

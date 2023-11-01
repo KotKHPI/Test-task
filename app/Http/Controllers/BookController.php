@@ -14,7 +14,12 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('livewire.books.index', ['books' => Book::all()]);
+        $search = request('search');
+
+        $books = Book::when($search, fn($query, $search) => $query->searchByNameOrAuthor($search));
+        $books->sortByName();
+        $books = $books->paginate(15);
+        return view('livewire.books.index', ['books' => $books]);
     }
 
     /**
