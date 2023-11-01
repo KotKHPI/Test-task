@@ -6,12 +6,12 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class CardAuthor extends Component
+class CardBook extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public readonly ?object $author)
+    public function __construct(public readonly ?object $book)
     {
         //
     }
@@ -21,6 +21,6 @@ class CardAuthor extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.card-author');
+        return view('components.card-book');
     }
 }

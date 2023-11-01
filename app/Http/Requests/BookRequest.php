@@ -11,7 +11,7 @@ class BookRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,9 @@ class BookRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:255',
             'description' => 'nullable',
-            'image' => 'image|mimes:jpg,jpeg,png|unique:App\Models\Book,image|file|size:2048',
-            'dateOfPublished' => 'required|date'
+            'image' => 'image|mimes:jpg,jpeg,png|unique:App\Models\Book,image|max:2048',
+            'date' => 'required|date',
+            'authors' => 'required|array',
         ];
     }
 }
